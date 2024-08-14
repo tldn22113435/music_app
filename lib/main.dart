@@ -1,6 +1,6 @@
 // main.dart
 import 'package:flutter/material.dart';
-import 'package:music_app/pages/Launch_screen.dart';
+import 'package:music_app/pages/Song.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LaunchScreen(),
+      home: SongScreen(),
     );
   }
 }
