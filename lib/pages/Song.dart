@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/pages/Menu.dart';
 import 'package:music_app/pages/Playlist.dart';
+import 'package:music_app/pages/Queue.dart'; // Import trang QueueScreen
 
 class SongScreen extends StatelessWidget {
   Color button = Color(0xFF8A9A9D);
@@ -124,7 +125,7 @@ class SongScreen extends StatelessWidget {
               IconButton(
                 icon: Icon(Icons.shuffle),
                 onPressed: () {},
-                color: Colors.white,
+                color: Colors.white54,
               ),
               IconButton(
                 icon: Icon(Icons.skip_previous),
@@ -150,9 +151,15 @@ class SongScreen extends StatelessWidget {
                 color: Colors.white,
               ),
               IconButton(
-                icon: Icon(Icons.add),
-                onPressed: () {},
-                color: Colors.white,
+                icon: Icon(Icons.equalizer),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              QueueScreen())); // Chuyển đến trang QueueScreen
+                },
+                color: Colors.white54,
               ),
               IconButton(
                 icon: Icon(Icons.add),
@@ -186,10 +193,10 @@ class SongScreen extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 20.0),
-                padding: const EdgeInsets.all(16.0),
+                margin: const EdgeInsets.symmetric(vertical: 1.0),
+                padding: const EdgeInsets.all(2.0),
                 decoration: BoxDecoration(
-                  color: Color(0xFFA6F3FF),
+                  color: Color(0xFF25BCC3),
                   borderRadius: BorderRadius.circular(23.0), // Bo tròn góc
                 ),
                 alignment: Alignment.center, // Căn giữa văn bản

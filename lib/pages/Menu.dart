@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/pages/Add_to_playlist.dart';
 
-import 'SleepTimerScreen.dart'; // Import trang Sleep Timer
+import 'SleepTimerScreen.dart';
 
 class MenuScreen extends StatelessWidget {
   @override
@@ -12,7 +13,15 @@ class MenuScreen extends StatelessWidget {
         elevation: 0,
         leading: Icon(Icons.favorite_border, color: Colors.white),
         actions: [
-          Icon(Icons.add, color: Colors.white),
+          IconButton(
+            icon: Icon(Icons.add, color: Colors.white),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => AddToPlaylistScreen()));
+            },
+          ),
           SizedBox(width: 16),
         ],
       ),
