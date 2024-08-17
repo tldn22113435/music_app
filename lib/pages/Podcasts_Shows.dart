@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Playlists extends StatefulWidget {
-  const Playlists({super.key});
+class Podcasts_Shows extends StatefulWidget {
+  const Podcasts_Shows({super.key});
 
   @override
-  State<Playlists> createState() => _PlaylistsState();
+  State<Podcasts_Shows> createState() => _Podcasts_ShowsState();
 }
 
-class _PlaylistsState extends State<Playlists> {
+class _Podcasts_ShowsState extends State<Podcasts_Shows> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +37,7 @@ class _PlaylistsState extends State<Playlists> {
                   ),
                   SizedBox(width: 20), // Tăng khoảng cách giữa các cột
                   Text(
-                    'Your Liked Playlists',
+                    'Your Liked Podcasts',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 22, // Phóng to Text
@@ -57,7 +57,7 @@ class _PlaylistsState extends State<Playlists> {
                   ),
                   SizedBox(width: 10),
                   Text(
-                    'Recently added',
+                    'A - Z',
                     style: TextStyle(
                         color: Color(0xFF39C0D4),
                         fontWeight: FontWeight.w700,
@@ -70,20 +70,20 @@ class _PlaylistsState extends State<Playlists> {
                   child: Column(
                     children: <Widget>[
                       SizedBox(height: 30),
-                      playlistItem('assets/images/playlist1.png', 'Superache',
-                          'Conan Gray'),
+                      playlistItem('assets/images/ps1.png', 'Anything Goes',
+                          'Updated Aug 31 • Emma Chamberlain'),
                       SizedBox(height: 30),
-                      playlistItem('assets/images/playlist2.png', 'DAWN FM',
-                          'The Weekend'),
+                      playlistItem('assets/images/ps2.png', 'Ask Me Another',
+                          'Updated Aug 18 • NPR Studios'),
                       SizedBox(height: 30),
-                      playlistItem('assets/images/playlist3.png', 'Planet Her',
-                          'Doja Cat'),
+                      playlistItem('assets/images/ps3.png', 'Baking a Mystery',
+                          'Updated Aug 21• Stephanie Soo'),
                       SizedBox(height: 30),
-                      playlistItem('assets/images/playlist4.png', 'Wiped Out!',
-                          'The Neighbourhood'),
+                      playlistItem('assets/images/ps4.png', 'Extra Dynamic',
+                          'Updated Aug 10 • ur mom ashley'),
                       SizedBox(height: 30),
-                      playlistItem('assets/images/playlist5.png', 'Bloom',
-                          'Troye Sivan'),
+                      playlistItem('assets/images/ps5.png', 'Teenager Therapy',
+                          'Updated Aug 21• iHeart Studios'),
                     ],
                   ),
                 ),
@@ -99,7 +99,7 @@ class _PlaylistsState extends State<Playlists> {
     return Row(
       children: <Widget>[
         Container(
-          width: 90, // Phóng to hình ảnh
+          width: 90, // Adjust image size if necessary
           height: 90,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12.0),
@@ -109,27 +109,30 @@ class _PlaylistsState extends State<Playlists> {
             ),
           ),
         ),
-        SizedBox(width: 20), // Tăng khoảng cách giữa các cột
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 22, // Phóng to Text
-                fontWeight: FontWeight.w700,
-                color: Colors.white,
+        SizedBox(width: 20),
+        Expanded(
+          // This will prevent overflow by allowing text to wrap
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
               ),
-            ),
-            Text(
-              subtitle,
-              style: TextStyle(
-                fontSize: 17, // Phóng to Text
-                fontWeight: FontWeight.w700,
-                color: Colors.grey,
+              Text(
+                subtitle,
+                style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.grey,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Playlists extends StatefulWidget {
-  const Playlists({super.key});
+class Albums extends StatefulWidget {
+  const Albums({super.key});
 
   @override
-  State<Playlists> createState() => _PlaylistsState();
+  State<Albums> createState() => _AlbumsState();
 }
 
-class _PlaylistsState extends State<Playlists> {
+class _AlbumsState extends State<Albums> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +24,7 @@ class _PlaylistsState extends State<Playlists> {
                   // IconButton đã bị loại bỏ khỏi đây
                 ],
               ),
+              SizedBox(height: 1),
               Row(
                 children: [
                   CircleAvatar(
@@ -37,7 +38,7 @@ class _PlaylistsState extends State<Playlists> {
                   ),
                   SizedBox(width: 20), // Tăng khoảng cách giữa các cột
                   Text(
-                    'Your Liked Playlists',
+                    'Your Liked Albums',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 22, // Phóng to Text
@@ -64,7 +65,7 @@ class _PlaylistsState extends State<Playlists> {
                         fontSize: 20), // Phóng to Text
                   )
                 ],
-              ),
+              ), // Dàn khoảng cách giữa các dòng
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
