@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'folder.dart'; // Import FolderScreen
+
 class Folders extends StatefulWidget {
   const Folders({super.key});
 
@@ -93,20 +95,17 @@ class _FoldersState extends State<Folders> {
                   child: Column(
                     children: <Widget>[
                       SizedBox(height: 30),
-                      playlistItem('assets/images/folder1.png', 'Superache',
-                          'Conan Gray'),
-                      SizedBox(height: 30),
-                      playlistItem('assets/images/folder1.png', 'DAWN FM',
-                          'The Weekend'),
-                      SizedBox(height: 30),
-                      playlistItem('assets/images/folder1.png', 'Planet Her',
-                          'Doja Cat'),
-                      SizedBox(height: 30),
-                      playlistItem('assets/images/folder1.png', 'Wiped Out!',
-                          'The Neighbourhood'),
+                      playlistItem(
+                          'assets/images/folder1.png', 'moods', '11 playlists'),
                       SizedBox(height: 30),
                       playlistItem(
-                          'assets/images/folder1.png', 'Bloom', 'Troye Sivan'),
+                          'assets/images/folder1.png', 'blends', '8 playlists'),
+                      SizedBox(height: 30),
+                      playlistItem(
+                          'assets/images/folder1.png', 'favs', '14 playlists'),
+                      SizedBox(height: 30),
+                      playlistItem('assets/images/folder1.png', 'random?',
+                          '10 playlists'),
                     ],
                   ),
                 ),
@@ -119,42 +118,54 @@ class _FoldersState extends State<Folders> {
   }
 
   Widget playlistItem(String imagePath, String title, String subtitle) {
-    return Row(
-      children: <Widget>[
-        Container(
-          width: 90, // Phóng to hình ảnh
-          height: 90,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12.0),
-            image: DecorationImage(
-              image: AssetImage(imagePath),
-              fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        if (title == 'moods') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => FolderScreen(),
+            ),
+          );
+        }
+      },
+      child: Row(
+        children: <Widget>[
+          Container(
+            width: 90, // Phóng to hình ảnh
+            height: 90,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12.0),
+              image: DecorationImage(
+                image: AssetImage(imagePath),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-        ),
-        SizedBox(width: 20), // Tăng khoảng cách giữa các cột
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 22, // Phóng to Text
-                fontWeight: FontWeight.w700,
-                color: Colors.white,
+          SizedBox(width: 20), // Tăng khoảng cách giữa các cột
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 22, // Phóng to Text
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
               ),
-            ),
-            Text(
-              subtitle,
-              style: TextStyle(
-                fontSize: 17, // Phóng to Text
-                fontWeight: FontWeight.w700,
-                color: Colors.grey,
+              Text(
+                subtitle,
+                style: TextStyle(
+                  fontSize: 17, // Phóng to Text
+                  fontWeight: FontWeight.w700,
+                  color: Colors.grey,
+                ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

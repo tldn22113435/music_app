@@ -62,6 +62,7 @@ class _LibraryState extends State<Library> {
           padding: EdgeInsets.all(20.0),
           child: Column(
             children: <Widget>[
+              // Phần tiêu đề và nút tìm kiếm
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -84,34 +85,40 @@ class _LibraryState extends State<Library> {
                   IconButton(
                     icon: Icon(Icons.search),
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Search()));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Search()),
+                      );
                     },
                     color: Colors.white,
                   ),
                 ],
               ),
               SizedBox(height: 20),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Icon(
-                    Icons.import_export,
-                    color: Colors.blueGrey,
-                    size: 28,
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    'Recently played',
-                    style: TextStyle(
+              // Ẩn dòng "Recently played" khi chọn mục khác
+              if (selectedIndex == -1) ...[
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Icon(
+                      Icons.import_export,
+                      color: Colors.blueGrey,
+                      size: 28,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      'Recently played',
+                      style: TextStyle(
                         color: Color(0xFF39C0D4),
                         fontWeight: FontWeight.w700,
-                        fontSize: 20),
-                  )
-                ],
-              ),
-              SizedBox(height: 20),
+                        fontSize: 20,
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(height: 20),
+              ],
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(

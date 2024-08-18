@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/pages/Folders.dart';
+import 'package:music_app/pages/Playlist.dart'; // Import PlaylistScreen
 
 class FolderScreen extends StatelessWidget {
   @override
@@ -11,7 +13,8 @@ class FolderScreen extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context); // Go back to the previous screen
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Folders()));
           },
           color: Colors.white,
         ),
@@ -62,15 +65,15 @@ class FolderScreen extends StatelessWidget {
                   child: ListView(
                     children: [
                       addNewPlaylist(),
-                      folderItem('current favorites', '20 songs',
+                      folderItem(context, 'current favorites', '20 songs',
                           'assets/images/song7_image.png'),
-                      folderItem('3:00am vibes', '18 songs',
+                      folderItem(context, '3:00am vibes', '18 songs',
                           'assets/images/song8_image.png'),
-                      folderItem('Lofi Loft', '63 songs',
-                          'assets/images/song_image.png'),
-                      folderItem('rain on my window', '32 songs',
+                      folderItem(context, 'Lofi Loft', '63 songs',
+                          'assets/images/song_image.png'), // This item will navigate to PlaylistScreen
+                      folderItem(context, 'rain on my window', '32 songs',
                           'assets/images/song9_image.png'),
-                      folderItem('Anime OSTs', '20 songs',
+                      folderItem(context, 'Anime OSTs', '20 songs',
                           'assets/images/song10_image.png'),
                     ],
                   ),
@@ -150,51 +153,60 @@ class FolderScreen extends StatelessWidget {
     );
   }
 
-  Widget folderItem(String title, String subtitle, String imagePath) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-          vertical: 12.0), // Adjusted vertical padding
-      child: Row(
-        children: [
-          Container(
-            height: 80, // Increased size
-            width: 80, // Increased size
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(imagePath),
-                fit: BoxFit.cover,
+  Widget folderItem(
+      BuildContext context, String title, String subtitle, String imagePath) {
+    return InkWell(
+      onTap: () {
+        if (title == 'Lofi Loft') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => PlaylistScreen()),
+          );
+        }
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
+        child: Row(
+          children: [
+            Container(
+              height: 80,
+              width: 80,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(imagePath),
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.circular(12),
               ),
-              borderRadius:
-                  BorderRadius.circular(12), // Increased border radius
             ),
-          ),
-          SizedBox(width: 20), // Increased width
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 20, // Increased font size
-                  color: Colors.white,
+            SizedBox(width: 20),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-              SizedBox(height: 6), // Increased space
-              Text(
-                subtitle,
-                style: TextStyle(
-                  fontSize: 16, // Increased font size
-                  color: Colors.white54,
+                SizedBox(height: 6),
+                Text(
+                  subtitle,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white54,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          Spacer(),
-          Icon(
-            Icons.more_vert,
-            color: Colors.white54,
-          ),
-        ],
+              ],
+            ),
+            Spacer(),
+            Icon(
+              Icons.more_vert,
+              color: Colors.white54,
+            ),
+          ],
+        ),
       ),
     );
   }
