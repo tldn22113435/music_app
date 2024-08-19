@@ -221,8 +221,6 @@ class SignIn extends StatelessWidget {
           ),
           style: ElevatedButton.styleFrom(
               backgroundColor: button,
-              minimumSize: Size(double.infinity, 50),
-              padding: EdgeInsets.symmetric(horizontal: 80),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                   side: BorderSide(color: borderbutton, width: 0.2)))),
@@ -254,8 +252,6 @@ class SignIn extends StatelessWidget {
           ),
           style: ElevatedButton.styleFrom(
               backgroundColor: button,
-              minimumSize: Size(double.infinity, 50),
-              padding: EdgeInsets.symmetric(horizontal: 80),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                   side: BorderSide(color: borderbutton, width: 0.2)))),
