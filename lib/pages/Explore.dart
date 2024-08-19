@@ -152,9 +152,9 @@ class _ExploreState extends State<Explore> {
                   Column(
                     children: <Widget>[
                       SizedBox(height: 15),
-                      buildRow(items1),
+                      buildRow(items1, context),
                       SizedBox(height: 10),
-                      buildRow(items2)
+                      buildRow(items2, context)
                     ],
                   ),
                   SizedBox(height: 40),
@@ -172,11 +172,11 @@ class _ExploreState extends State<Explore> {
                   Column(
                     children: <Widget>[
                       SizedBox(height: 15),
-                      buildRow(items3),
+                      buildRow(items3, context),
                       SizedBox(height: 10),
-                      buildRow(items4),
+                      buildRow(items4, context),
                       SizedBox(height: 10),
-                      buildRow(items5)
+                      buildRow(items5, context)
                     ],
                   ),
                 ],
@@ -189,12 +189,13 @@ class _ExploreState extends State<Explore> {
   }
 }
 
-Widget buildItem(Color menu, String imagePath, String text, Color color) {
+Widget buildItem(
+    Color menu, String imagePath, String text, Color color, context) {
   return Padding(
       padding: EdgeInsets.symmetric(horizontal: 5),
       child: Container(
         height: 110,
-        width: 165,
+        width: MediaQuery.of(context).size.width * 0.4,
         child: Stack(
           children: <Widget>[
             Positioned(
@@ -233,14 +234,13 @@ Widget buildItem(Color menu, String imagePath, String text, Color color) {
       ));
 }
 
-Widget buildRow(List<Map<String, dynamic>> items) {
+Widget buildRow(List<Map<String, dynamic>> items, context) {
   return Row(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.center,
     children: items.map((item) {
-      return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 5),
-        child: buildItem(
-            item['color']!, item['imagePath']!, item['text']!, item['color']!),
-      );
+      return buildItem(item['color']!, item['imagePath']!, item['text']!,
+          item['color']!, context);
     }).toList(),
   );
 }

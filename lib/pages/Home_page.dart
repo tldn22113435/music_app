@@ -125,11 +125,11 @@ class HomeContent extends StatelessWidget {
         SizedBox(height: 20),
         buildTitle('Continue Listening'),
         SizedBox(height: 20),
-        buildRow(menu, items1),
+        buildRow(menu, items1, context),
         SizedBox(height: 10),
-        buildRow(menu, items2),
+        buildRow(menu, items2, context),
         SizedBox(height: 10),
-        buildRow(menu, items3),
+        buildRow(menu, items3, context),
         SizedBox(height: 20),
         buildTitle('Your Top Mixes'),
         SizedBox(height: 10),
@@ -292,44 +292,39 @@ Widget buildBased(String imagePath) {
   );
 }
 
-Widget buildItem(Color menu, String imagePath, String text) {
-  return Padding(
-    padding: EdgeInsets.symmetric(horizontal: 5),
-    child: Container(
-      height: 60,
-      width: 175,
-      child: Row(
-        children: <Widget>[
-          Container(
-            height: 60,
-            width: 60,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(imagePath), fit: BoxFit.cover)),
-          ),
-          SizedBox(width: 10),
-          Text(
-            text,
-            style: TextStyle(
-                fontSize: 10, fontWeight: FontWeight.w700, color: Colors.white),
-          )
-        ],
-      ),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
-          color: menu.withOpacity(0.2)),
+Widget buildItem(Color menu, String imagePath, String text, context) {
+  return Container(
+    height: 60,
+    width: MediaQuery.of(context).size.width * 0.45,
+    padding: EdgeInsets.all(8.0),
+    child: Row(
+      children: <Widget>[
+        Container(
+          height: 60,
+          width: 50,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(imagePath), fit: BoxFit.cover)),
+        ),
+        SizedBox(width: 10),
+        Text(
+          text,
+          style: TextStyle(
+              fontSize: 10, fontWeight: FontWeight.w700, color: Colors.white),
+        )
+      ],
     ),
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+        color: menu.withOpacity(0.2)),
   );
 }
 
-Widget buildRow(Color menu, List<Map<String, String>> items) {
+Widget buildRow(Color menu, List<Map<String, String>> items, context) {
   return Row(
     children: items.map((item) {
-      return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 0),
-        child: buildItem(menu, item['imagePath']!, item['text']!),
-      );
+      return buildItem(menu, item['imagePath']!, item['text']!, context);
     }).toList(),
   );
 }
