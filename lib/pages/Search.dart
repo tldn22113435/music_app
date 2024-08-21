@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/pages/Library.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -22,13 +21,14 @@ class _SearchState extends State<Search> {
               Row(
                 children: [
                   IconButton(
-                    icon: Icon(Icons.arrow_back),
-                    iconSize: 32, // Increase the size of the back arrow icon
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                      size: 30,
+                    ),
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Library()));
+                      Navigator.pop(context); // Quay lại trang trước
                     },
-                    color: Colors.white,
                   ),
                 ],
               ),
