@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/pages/Add_to_playlist.dart';
-import 'package:music_app/pages/Folder.dart';
 import 'package:music_app/pages/Menu.dart';
 
 class PlaylistScreen extends StatelessWidget {
@@ -14,8 +13,7 @@ class PlaylistScreen extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => FolderScreen()));
+            Navigator.pop(context);
           },
           color: Colors.white,
         ),

@@ -13,6 +13,7 @@ class SongScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         elevation: 0,
+        automaticallyImplyLeading: false,
         title: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Row(
@@ -21,33 +22,43 @@ class SongScreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'PLAYING FROM PLAYLIST',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.white54,
+                  SizedBox(height: 25),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: 16.0), // Căn chỉnh phần nội dung sang bên phải
+                    child: Text(
+                      'PLAYING FROM PLAYLIST:',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.white54,
+                      ),
                     ),
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        'Lofi Loft',
-                        style: TextStyle(
-                            color: Color(0xFFA6F3FF),
-                            fontSize: 18), // Tùy chỉnh kích thước chữ nếu cần
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.arrow_drop_down, color: Colors.white),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => PlaylistScreen()));
-                        },
-                      )
-                      // Biểu tượng mũi tên chỉ xuống
-                    ],
-                  )
+                  SizedBox(height: 1),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: 16.0), // Căn chỉnh phần nội dung sang bên phải
+                    child: Row(
+                      children: [
+                        Text(
+                          'Lofi Loft',
+                          style: TextStyle(
+                              color: Color(0xFFA6F3FF),
+                              fontSize: 18), // Tùy chỉnh kích thước chữ nếu cần
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.arrow_drop_down,
+                              color: Colors.white54),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PlaylistScreen()));
+                          },
+                        )
+                      ],
+                    ),
+                  ),
                 ],
               ),
               IconButton(

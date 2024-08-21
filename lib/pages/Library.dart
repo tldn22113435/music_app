@@ -287,7 +287,7 @@ class _LibraryState extends State<Library> {
                                     borderRadius: BorderRadius.circular(12.0),
                                     image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/library5.png'),
+                                          'assets/images/playlist5.png'),
                                       fit: BoxFit.cover,
                                     ),
                                   ),
