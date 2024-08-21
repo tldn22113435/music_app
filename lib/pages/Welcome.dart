@@ -26,7 +26,7 @@ class WelcomeScreen extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    height: MediaQuery.of(context).size.height / 3,
+                    height: MediaQuery.of(context).size.height / 2.5,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: Colors.black,

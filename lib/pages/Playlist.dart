@@ -1,19 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/pages/Add_to_playlist.dart';
-import 'package:music_app/pages/Menu.dart';
+import 'package:music_app/pages/Folder.dart';
+import 'package:music_app/pages/Main_Screen.dart';
+import 'package:music_app/pages/Song.dart';
 
-class PlaylistScreen extends StatelessWidget {
+class PlaylistScreen extends StatefulWidget {
+  const PlaylistScreen({super.key});
+
+  @override
+  _PlaylistScreenState createState() => _PlaylistScreenState();
+}
+
+class _PlaylistScreenState extends State<PlaylistScreen> {
+  int _selectedIndex = 2; // Set to 2 to highlight the Library tab
+
+  void _onBottomNavItemTapped(int index) {
+    if (index != _selectedIndex) {
+      // Check if the index is different from the current
+      setState(() {
+        _selectedIndex = index; // Update the selected index
+      });
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MainScreen(initialIndex: index),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      extendBody: true,
+      backgroundColor: Color(0xFF121111),
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFF121111),
         elevation: 0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        FolderScreen())); // Return to previous screen
           },
           color: Colors.white,
         ),
@@ -21,7 +52,7 @@ class PlaylistScreen extends StatelessWidget {
           'FROM "PLAYLISTS"',
           style: TextStyle(
             fontSize: 14,
-            color: Colors.white54,
+            color: Color(0xFFFFFFFF),
           ),
         ),
         centerTitle: true,
@@ -29,7 +60,7 @@ class PlaylistScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.more_vert),
             onPressed: () {
-              // Add functionality here if needed
+              // More actions
             },
             color: Colors.white,
           ),
@@ -43,12 +74,12 @@ class PlaylistScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  height: 160,
-                  width: 160,
+                  height: 180,
+                  width: 180,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
-                          'assets/images/song_image.png'), // Replace with your image asset
+                          'assets/images/song_image.png'), // Your image asset
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.circular(8),
@@ -95,50 +126,50 @@ class PlaylistScreen extends StatelessWidget {
               ],
             ),
           ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              color: Colors.black.withOpacity(0.0), // Transparent background
-              padding: EdgeInsets.symmetric(vertical: 8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.home, color: Colors.white),
-                      Text('Home', style: TextStyle(color: Colors.white)),
-                    ],
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(
-                        icon: Icon(Icons.search, color: Colors.white),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AddToPlaylistScreen()));
-                        },
-                      ),
-                      Text('Explore', style: TextStyle(color: Colors.white)),
-                    ],
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.folder, color: Colors.cyan),
-                      Text('Library', style: TextStyle(color: Colors.cyan)),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
         ],
+      ),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.7), // Màu đen với độ mờ
+              spreadRadius: 10, // Phạm vi lan tỏa của bóng
+              blurRadius: 20, // Độ mờ của bóng
+              offset: Offset(0, -3), // Vị trí đổ bóng (di chuyển lên trên)
+            ),
+          ],
+          gradient: LinearGradient(
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+            colors: [
+              Colors.black.withOpacity(1), // Đen đậm phía dưới
+              Colors.black.withOpacity(0.0), // Trong suốt phía trên
+            ],
+          ),
+        ),
+        child: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Explore',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.folder_outlined),
+              label: 'Library',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Color(0xFF06A0B5),
+          unselectedItemColor: Colors.grey,
+          onTap: _onBottomNavItemTapped,
+          backgroundColor:
+              Colors.transparent, // Làm trong suốt BottomNavigationBar
+          elevation: 0,
+        ),
       ),
     );
   }
@@ -186,7 +217,7 @@ class PlaylistScreen extends StatelessWidget {
             icon: Icon(Icons.more_vert, color: Colors.white),
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MenuScreen()));
+                  MaterialPageRoute(builder: (context) => SongScreen()));
             },
           )
         ],

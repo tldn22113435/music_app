@@ -32,28 +32,6 @@ class _HomePageState extends State<HomePage> {
       extendBody: true,
       body:
           _pages[_selectedIndex], // Hiển thị trang tương ứng với tab được chọn
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Explore',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.folder_outlined),
-            label: 'Library',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Color(0xFF06A0B5), // Màu của mục được chọn
-        unselectedItemColor: Colors.grey, // Màu của các mục chưa được chọn
-        onTap: _onItemTapped, // Gọi hàm khi mục được chọn
-        backgroundColor: Colors.transparent, // Màu nền của bottom bar
-        elevation: 0,
-      ),
     );
   }
 }

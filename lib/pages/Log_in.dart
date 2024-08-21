@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/pages/Home_page.dart';
+import 'package:music_app/pages/Main_Screen.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -40,8 +40,8 @@ class _LogInState extends State<LogIn> {
                 child: Column(
                   children: <Widget>[
                     Container(
-                      height: 160,
-                      width: 300,
+                      height: 120,
+                      width: 200,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage('assets/images/musium.png'),
@@ -54,7 +54,7 @@ class _LogInState extends State<LogIn> {
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Colors.white,
-                              fontSize: 32,
+                              fontSize: 25,
                               letterSpacing: 2.5),
                           textAlign: TextAlign.center),
                     ),
@@ -162,7 +162,7 @@ class _LogInState extends State<LogIn> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HomePage()));
+                                    builder: (context) => MainScreen()));
                           },
                           child: Text(
                             'Log in',
@@ -211,7 +211,7 @@ class _LogInState extends State<LogIn> {
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 18),
+                                  fontSize: 10),
                             ),
                           ),
                           Expanded(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/pages/Playlist.dart'; // Import PlaylistScreen
+import 'package:music_app/pages/Main_Screen.dart';
+import 'package:music_app/pages/Playlist.dart';
 
 class FolderScreen extends StatelessWidget {
   @override
@@ -12,7 +13,13 @@ class FolderScreen extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    MainScreen(initialIndex: 2), // Chuyển đến Library
+              ),
+            );
           },
           color: Colors.white,
         ),
@@ -79,42 +86,36 @@ class FolderScreen extends StatelessWidget {
               ],
             ),
           ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              color: Colors.black.withOpacity(0.0), // Transparent background
-              padding: EdgeInsets.symmetric(vertical: 8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.home, color: Colors.white),
-                      Text('Home', style: TextStyle(color: Colors.white)),
-                    ],
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.search, color: Colors.white),
-                      Text('Explore', style: TextStyle(color: Colors.white)),
-                    ],
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.folder, color: Colors.cyan),
-                      Text('Library', style: TextStyle(color: Colors.cyan)),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Explore',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.folder_outlined),
+            label: 'Library',
           ),
         ],
+        currentIndex: 2, // Đặt `Library` là mục được chọn
+        selectedItemColor: Color(0xFF06A0B5),
+        unselectedItemColor: Colors.grey,
+        onTap: (index) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MainScreen(initialIndex: index),
+            ),
+          );
+        },
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
     );
   }
