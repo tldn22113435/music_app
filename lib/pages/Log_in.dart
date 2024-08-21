@@ -40,8 +40,8 @@ class _LogInState extends State<LogIn> {
                 child: Column(
                   children: <Widget>[
                     Container(
-                      height: 120,
-                      width: 200,
+                      height: 160,
+                      width: 300,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage('assets/images/musium.png'),
@@ -54,7 +54,7 @@ class _LogInState extends State<LogIn> {
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Colors.white,
-                              fontSize: 25,
+                              fontSize: 32,
                               letterSpacing: 2.5),
                           textAlign: TextAlign.center),
                     ),
@@ -211,7 +211,7 @@ class _LogInState extends State<LogIn> {
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 10),
+                                  fontSize: 18),
                             ),
                           ),
                           Expanded(

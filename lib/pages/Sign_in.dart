@@ -41,8 +41,8 @@ class SignIn extends StatelessWidget {
                     ],
                   ),
                   margin: EdgeInsets.only(top: 0),
-                  height: 170,
-                  width: 250,
+                  height: 200,
+                  width: 320,
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage('assets/images/musium.png'),
@@ -54,7 +54,7 @@ class SignIn extends StatelessWidget {
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
-                          fontSize: 35,
+                          fontSize: 44,
                           letterSpacing: 2.5),
                       textAlign: TextAlign.center),
                 ),
@@ -213,8 +213,8 @@ class SignIn extends StatelessWidget {
                 'Continue With Apple',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 12,
-                    letterSpacing: 2,
+                    fontSize: 16,
+                    letterSpacing: 1,
                     fontWeight: FontWeight.bold),
               ),
             ],
