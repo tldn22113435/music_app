@@ -1,86 +1,96 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/pages/Explore.dart';
-import 'package:music_app/pages/Library.dart';
 import 'package:music_app/pages/Stats.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
-
-  // Danh sách các trang
-  final List<Widget> _pages = [
-    HomeContent(), // Nội dung của trang HomePage
-    Explore(), // Trang Explore
-    Library(), // Trang Library
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index; // Cập nhật index khi tab được chọn
-    });
-  }
-
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Get screen size
+    final screenSize = MediaQuery.of(context).size;
+
+    // Dynamic dimensions based on screen size
+    final double iconSize = screenSize.width * 0.08;
+    final double rowPadding = screenSize.width * 0.025;
+    final double titleFontSize = screenSize.width * 0.05;
+    final double textFontSize = screenSize.width * 0.026;
+    final double imageHeight = screenSize.height * 0.21;
+
     return Scaffold(
       extendBody: true,
-      body:
-          _pages[_selectedIndex], // Hiển thị trang tương ứng với tab được chọn
-    );
-  }
-}
-
-// Widget HomeContent chứa nội dung chính của trang HomePage
-class HomeContent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    Color first = Color(0xFF0E0E0E);
-    Color second = Color(0xFF102B2D);
-    Color third = Color(0xFF06A0B5);
-    Color menu = Color(0xFF436369);
-
-    List<Map<String, String>> items1 = [
-      {'imagePath': 'assets/images/food1.png', 'text': 'Coffee & jazz'},
-      {'imagePath': 'assets/images/hinh2.png', 'text': 'RELEASED '},
-    ];
-
-    List<Map<String, String>> items2 = [
-      {'imagePath': 'assets/images/hinh6.png', 'text': 'Anything Goes'},
-      {'imagePath': 'assets/images/hinh3.png', 'text': 'Anime OSTs'},
-    ];
-
-    List<Map<String, String>> items3 = [
-      {'imagePath': 'assets/images/hinh5.png', 'text': "Harry's House"},
-      {'imagePath': 'assets/images/hinh4.png', 'text': 'Lo-Fi Beats'},
-    ];
-
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [third, second, first],
-          stops: [0.0, 0.0, 0.4],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF06A0B5), Color(0xFF102B2D), Color(0xFF0E0E0E)],
+            stops: [0.0, 0.0, 0.4],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
         ),
-      ),
-      child: Scaffold(
-        extendBody: true,
-        backgroundColor: Colors.transparent,
-        body: SafeArea(
+        child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.0),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  // Nội dung chính của HomePage (profile, các danh sách)
-                  buildHomeContent(context, menu, items1, items2, items3),
+                  buildHeader(context, iconSize),
+                  SizedBox(height: 20),
+                  buildTitle('Continue Listening', titleFontSize),
+                  SizedBox(height: 20),
+                  buildRow(
+                      Color(0xFF436369),
+                      [
+                        {
+                          'imagePath': 'assets/images/food1.png',
+                          'text': 'Coffee & jazz'
+                        },
+                        {
+                          'imagePath': 'assets/images/hinh2.png',
+                          'text': 'RELEASED '
+                        },
+                      ],
+                      imageHeight,
+                      rowPadding,
+                      textFontSize),
+                  SizedBox(height: 10),
+                  buildRow(
+                      Color(0xFF436369),
+                      [
+                        {
+                          'imagePath': 'assets/images/hinh6.png',
+                          'text': 'Anything Goes'
+                        },
+                        {
+                          'imagePath': 'assets/images/hinh3.png',
+                          'text': 'Anime OSTs'
+                        },
+                      ],
+                      imageHeight,
+                      rowPadding,
+                      textFontSize),
+                  SizedBox(height: 10),
+                  buildRow(
+                      Color(0xFF436369),
+                      [
+                        {
+                          'imagePath': 'assets/images/hinh5.png',
+                          'text': "Harry's House"
+                        },
+                        {
+                          'imagePath': 'assets/images/hinh4.png',
+                          'text': 'Lo-Fi Beats'
+                        },
+                      ],
+                      imageHeight,
+                      rowPadding,
+                      textFontSize),
+                  SizedBox(height: 20),
+                  buildTitle('Your Top Mixes', titleFontSize),
+                  SizedBox(height: 10),
+                  buildTopMixes(imageHeight, rowPadding, textFontSize),
+                  SizedBox(height: 15),
+                  buildTitle('Based on your recent listening', titleFontSize),
+                  SizedBox(height: 10),
+                  buildRecentListening(imageHeight, rowPadding),
                 ],
               ),
             ),
@@ -90,42 +100,23 @@ class HomeContent extends StatelessWidget {
     );
   }
 
-  Widget buildHomeContent(
-      BuildContext context,
-      Color menu,
-      List<Map<String, String>> items1,
-      List<Map<String, String>> items2,
-      List<Map<String, String>> items3) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        buildHeader(context),
-        SizedBox(height: 20),
-        buildTitle('Continue Listening'),
-        SizedBox(height: 20),
-        buildRow(menu, items1),
-        SizedBox(height: 10),
-        buildRow(menu, items2),
-        SizedBox(height: 10),
-        buildRow(menu, items3),
-        SizedBox(height: 20),
-        buildTitle('Your Top Mixes'),
-        SizedBox(height: 10),
-        buildTopMixes(),
-        SizedBox(height: 15),
-        buildTitle('Based on your recent listening'),
-        SizedBox(height: 10),
-        buildRecentListening(),
-      ],
-    );
-  }
-
-  Widget buildHeader(BuildContext context) {
+  Widget buildHeader(BuildContext context, double iconSize) {
     return Row(
       children: <Widget>[
-        CircleAvatar(
-          backgroundImage: AssetImage('assets/images/girl1.png'),
-          radius: 20.0,
+        Container(
+          padding: EdgeInsets.all(3),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+              colors: [Color(0xFF158085), Color(0xFF00DBFC)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          child: CircleAvatar(
+            backgroundImage: AssetImage('assets/images/avatar.jpg'),
+            radius: iconSize / 2,
+          ),
         ),
         SizedBox(width: 10),
         Column(
@@ -134,95 +125,103 @@ class HomeContent extends StatelessWidget {
             Text('Welcome back!',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 15,
+                    fontSize: iconSize * 0.5,
                     fontWeight: FontWeight.w700)),
             Text('chandrama',
                 style: TextStyle(
                     color: Colors.white70,
-                    fontSize: 12,
+                    fontSize: iconSize * 0.4,
                     fontWeight: FontWeight.w700)),
           ],
         ),
         Spacer(),
         IconButton(
-          icon: Icon(Icons.bar_chart_outlined, size: 30, color: Colors.white),
+          icon: Icon(Icons.bar_chart_outlined,
+              size: iconSize, color: Colors.white),
           onPressed: () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Stats()));
           },
         ),
         IconButton(
-          icon:
-              Icon(Icons.notifications_outlined, size: 30, color: Colors.white),
+          icon: Icon(Icons.notifications_outlined,
+              size: iconSize, color: Colors.white),
           onPressed: () {},
         ),
         IconButton(
-          icon: Icon(Icons.settings_outlined, size: 30, color: Colors.white),
+          icon: Icon(Icons.settings_outlined,
+              size: iconSize, color: Colors.white),
           onPressed: () {},
         ),
       ],
     );
   }
 
-  Widget buildTitle(String text) {
+  Widget buildTitle(String text, double fontSize) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Text(
         text,
         style: TextStyle(
-            fontSize: 22, fontWeight: FontWeight.w700, color: Colors.white),
+            fontSize: fontSize,
+            fontWeight: FontWeight.w700,
+            color: Colors.white),
       ),
     );
   }
 
-  Widget buildTopMixes() {
+  Widget buildTopMixes(
+      double imageHeight, double rowPadding, double textFontSize) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         children: <Widget>[
-          buildMixes(Color(0xFFFF7777), 'assets/images/mixes1.png', 'Pop Mix'),
-          buildMixes(
-              Color(0xFFFFFA77), 'assets/images/mixes2.png', 'Chill Mix'),
-          buildMixes(Color(0xFF77FF95), 'assets/images/mixes3.png', 'Kpop'),
+          buildMixes(Color(0xFFFF7777), 'assets/images/mixes1.png', 'Pop Mix',
+              imageHeight, rowPadding, textFontSize),
+          buildMixes(Color(0xFFFFFA77), 'assets/images/mixes2.png', 'Chill Mix',
+              imageHeight, rowPadding, textFontSize),
+          buildMixes(Color(0xFF77FF95), 'assets/images/mixes3.png', 'Kpop',
+              imageHeight, rowPadding, textFontSize),
         ],
       ),
     );
   }
 
-  Widget buildRecentListening() {
+  Widget buildRecentListening(double imageHeight, double rowPadding) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         children: <Widget>[
-          buildBased('assets/images/based1.png'),
-          buildBased('assets/images/based2.png'),
+          buildBased('assets/images/based1.png', imageHeight, rowPadding),
+          buildBased('assets/images/based2.png', imageHeight, rowPadding),
         ],
       ),
     );
   }
 }
 
-Widget buildMixes(Color RectangleColor, String imagePath, String text) {
+Widget buildMixes(Color rectangleColor, String imagePath, String text,
+    double imageHeight, double rowPadding, double textFontSize) {
   return Padding(
-    padding: EdgeInsets.symmetric(horizontal: 15),
+    padding: EdgeInsets.symmetric(horizontal: rowPadding),
     child: Stack(
       children: <Widget>[
         Container(
-          height: 180,
-          width: 180,
+          height: imageHeight,
+          width: imageHeight,
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage(imagePath), fit: BoxFit.cover)),
         ),
         Positioned(
-          top: 18,
-          left: 30,
+          top: imageHeight * 0.1,
+          left: imageHeight * 0.15,
           child: Text(
             text,
             style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
-                fontSize: 15,
+                fontSize: textFontSize,
                 letterSpacing: 0.04),
           ),
         ),
@@ -230,7 +229,7 @@ Widget buildMixes(Color RectangleColor, String imagePath, String text) {
           top: 5,
           left: -25,
           child: CircleAvatar(
-            minRadius: 20,
+            minRadius: imageHeight * 0.1,
             backgroundColor: Colors.white,
           ),
         ),
@@ -238,7 +237,7 @@ Widget buildMixes(Color RectangleColor, String imagePath, String text) {
           bottom: 30,
           right: -50,
           child: CircleAvatar(
-            minRadius: 45,
+            minRadius: imageHeight * 0.25,
             backgroundColor: Colors.white,
           ),
         ),
@@ -248,7 +247,7 @@ Widget buildMixes(Color RectangleColor, String imagePath, String text) {
           right: 0,
           child: Container(
             height: 10,
-            color: RectangleColor,
+            color: rectangleColor,
           ),
         )
       ],
@@ -256,12 +255,12 @@ Widget buildMixes(Color RectangleColor, String imagePath, String text) {
   );
 }
 
-Widget buildBased(String imagePath) {
+Widget buildBased(String imagePath, double imageHeight, double rowPadding) {
   return Padding(
-    padding: EdgeInsets.symmetric(horizontal: 15),
+    padding: EdgeInsets.symmetric(horizontal: rowPadding),
     child: Container(
-      height: 200,
-      width: 200,
+      height: imageHeight * 1.1, // 10% lớn hơn chiều cao hình ảnh
+      width: imageHeight * 1.1, // 10% lớn hơn chiều rộng hình ảnh
       decoration: BoxDecoration(
         image: DecorationImage(image: AssetImage(imagePath), fit: BoxFit.cover),
         borderRadius: BorderRadius.circular(10),
@@ -270,17 +269,18 @@ Widget buildBased(String imagePath) {
   );
 }
 
-Widget buildItem(Color menu, String imagePath, String text) {
+Widget buildItem(Color menu, String imagePath, String text, double height,
+    double width, double fontSize) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 5),
     child: Container(
-      height: 60,
-      width: 175,
+      height: height,
+      width: width,
       child: Row(
         children: <Widget>[
           Container(
-            height: 60,
-            width: 60,
+            height: height,
+            width: height,
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(imagePath), fit: BoxFit.cover)),
@@ -289,7 +289,9 @@ Widget buildItem(Color menu, String imagePath, String text) {
           Text(
             text,
             style: TextStyle(
-                fontSize: 10, fontWeight: FontWeight.w700, color: Colors.white),
+                fontSize: fontSize,
+                fontWeight: FontWeight.w700,
+                color: Colors.white),
           )
         ],
       ),
@@ -301,12 +303,14 @@ Widget buildItem(Color menu, String imagePath, String text) {
   );
 }
 
-Widget buildRow(Color menu, List<Map<String, String>> items) {
+Widget buildRow(Color menu, List<Map<String, String>> items, double imageHeight,
+    double rowPadding, double textFontSize) {
   return Row(
     children: items.map((item) {
       return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 0),
-        child: buildItem(menu, item['imagePath']!, item['text']!),
+        padding: EdgeInsets.symmetric(horizontal: rowPadding),
+        child: buildItem(menu, item['imagePath']!, item['text']!,
+            imageHeight * 0.4, imageHeight * 1.05, textFontSize),
       );
     }).toList(),
   );
