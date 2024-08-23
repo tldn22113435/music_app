@@ -20,9 +20,7 @@ class _AlbumsState extends State<Albums> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  // IconButton đã bị loại bỏ khỏi đây
-                ],
+                children: <Widget>[],
               ),
               SizedBox(height: 1),
               Row(
@@ -36,7 +34,7 @@ class _AlbumsState extends State<Albums> {
                       iconSize: 30, // Phóng to Icon
                     ),
                   ),
-                  SizedBox(width: 20), // Tăng khoảng cách giữa các cột
+                  SizedBox(width: 20),
                   Text(
                     'Your Liked Albums',
                     style: TextStyle(
@@ -46,7 +44,7 @@ class _AlbumsState extends State<Albums> {
                   ),
                 ],
               ),
-              SizedBox(height: 30), // Tăng khoảng cách giữa các dòng
+              SizedBox(height: 30),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -62,10 +60,10 @@ class _AlbumsState extends State<Albums> {
                     style: TextStyle(
                         color: Color(0xFF39C0D4),
                         fontWeight: FontWeight.w700,
-                        fontSize: 20), // Phóng to Text
+                        fontSize: 20),
                   )
                 ],
-              ), // Dàn khoảng cách giữa các dòng
+              ),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
@@ -100,7 +98,7 @@ class _AlbumsState extends State<Albums> {
     return Row(
       children: <Widget>[
         Container(
-          width: 90, // Phóng to hình ảnh
+          width: 90,
           height: 90,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12.0),
@@ -110,7 +108,7 @@ class _AlbumsState extends State<Albums> {
             ),
           ),
         ),
-        SizedBox(width: 20), // Tăng khoảng cách giữa các cột
+        SizedBox(width: 20),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
