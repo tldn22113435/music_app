@@ -217,7 +217,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
             icon: Icon(Icons.more_vert, color: Colors.white),
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Song_Screen()));
+                  MaterialPageRoute(builder: (context) => SongScreen()));
             },
           )
         ],

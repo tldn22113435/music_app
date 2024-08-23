@@ -27,13 +27,13 @@ class LaunchScreen extends StatelessWidget {
                   width: double.infinity,
                 ),
                 Positioned(
-                  bottom: 40.0,
-                  right: 5.0,
-                  left: 5.0,
+                  bottom: 1,
+                  right: 20.0,
+                  left: 20.0,
                   child: Image(
                     image: AssetImage('assets/images/luna.png'),
                     height: 200,
-                    width: 200,
+                    width: 150,
                     alignment: Alignment.bottomCenter,
                     fit: BoxFit.cover,
                   ),

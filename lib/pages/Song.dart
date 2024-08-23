@@ -3,7 +3,7 @@ import 'package:music_app/pages/Menu.dart';
 import 'package:music_app/pages/Playlist.dart';
 import 'package:music_app/pages/Queue.dart';
 
-class Song_Screen extends StatelessWidget {
+class SongScreen extends StatelessWidget {
   final Color button = Color(0xFF8A9A9D);
 
   @override
@@ -134,7 +134,7 @@ class Song_Screen extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.02), // Responsive spacing
+                SizedBox(height: screenHeight * 0.02),
                 // Progress Bar
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.0),

@@ -6,11 +6,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-    final double textFontSize = screenSize.width * 0.03;
+    final double textFontSize = screenSize.width * 0.025;
     final double titleFontSize = screenSize.width * 0.048;
     final double rowPadding = screenSize.width * 0.025;
     final double imageHeight = screenSize.height * 0.174;
-    final double iconSize = screenSize.width * 0.08;
+    final double iconSize = screenSize.width * 0.07;
 
     return Scaffold(
       extendBody: true,
@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
                   buildHeader(context, iconSize),
                   SizedBox(height: 20),
                   buildTitle('Continue Listening', titleFontSize),
-                  SizedBox(height: 20),
+                  SizedBox(height: 30), // Increased spacing here
                   buildRow(
                       Color(0xFF436369),
                       [
@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
                       imageHeight,
                       rowPadding,
                       textFontSize),
-                  SizedBox(height: 10),
+                  SizedBox(height: 20), // Increased spacing here
                   buildRow(
                       Color(0xFF436369),
                       [
@@ -65,7 +65,7 @@ class HomePage extends StatelessWidget {
                       imageHeight,
                       rowPadding,
                       textFontSize),
-                  SizedBox(height: 10),
+                  SizedBox(height: 20), // Increased spacing here
                   buildRow(
                       Color(0xFF436369),
                       [
@@ -81,13 +81,13 @@ class HomePage extends StatelessWidget {
                       imageHeight,
                       rowPadding,
                       textFontSize),
-                  SizedBox(height: 20),
+                  SizedBox(height: 30), // Increased spacing here
                   buildTitle('Your Top Mixes', titleFontSize),
-                  SizedBox(height: 10),
+                  SizedBox(height: 20), // Increased spacing here
                   buildTopMixes(imageHeight, rowPadding, textFontSize),
-                  SizedBox(height: 15),
+                  SizedBox(height: 25), // Increased spacing here
                   buildTitle('Based on your recent listening', titleFontSize),
-                  SizedBox(height: 10),
+                  SizedBox(height: 20), // Increased spacing here
                   buildRecentListening(imageHeight, rowPadding),
                 ],
               ),
@@ -257,8 +257,8 @@ Widget buildBased(String imagePath, double imageHeight, double rowPadding) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: rowPadding),
     child: Container(
-      height: imageHeight * 1.1, // 10% lớn hơn chiều cao hình ảnh
-      width: imageHeight * 1.1, // 10% lớn hơn chiều rộng hình ảnh
+      height: imageHeight * 1.1,
+      width: imageHeight * 1.1,
       decoration: BoxDecoration(
         image: DecorationImage(image: AssetImage(imagePath), fit: BoxFit.cover),
         borderRadius: BorderRadius.circular(10),
@@ -280,23 +280,38 @@ Widget buildItem(Color menu, String imagePath, String text, double height,
             height: height,
             width: height,
             decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(imagePath), fit: BoxFit.cover)),
+              image: DecorationImage(
+                image: AssetImage(imagePath),
+                fit: BoxFit.cover,
+              ),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10), // Rounded corners on the top-left
+                bottomLeft:
+                    Radius.circular(10), // Rounded corners on the bottom-left
+              ),
+            ),
           ),
           SizedBox(width: 10),
           Text(
             text,
             style: TextStyle(
-                fontSize: fontSize,
-                fontWeight: FontWeight.w700,
-                color: Colors.white),
-          )
+              fontSize: fontSize,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+            ),
+          ),
         ],
       ),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
-          color: menu.withOpacity(0.2)),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(10), // Rounded corners on the top-left
+          bottomLeft: Radius.circular(10),
+          topRight: Radius.circular(10), // Rounded corners on the top-left
+          bottomRight:
+              Radius.circular(10), // Rounded corners on the bottom-left
+        ),
+        color: menu.withOpacity(0.2),
+      ),
     ),
   );
 }
@@ -308,7 +323,7 @@ Widget buildRow(Color menu, List<Map<String, String>> items, double imageHeight,
       return Padding(
         padding: EdgeInsets.symmetric(horizontal: rowPadding),
         child: buildItem(menu, item['imagePath']!, item['text']!,
-            imageHeight * 0.4, imageHeight * 1.05, textFontSize),
+            imageHeight * 0.3, imageHeight * 1.05, textFontSize),
       );
     }).toList(),
   );
