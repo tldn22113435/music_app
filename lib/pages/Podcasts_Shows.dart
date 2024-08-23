@@ -40,7 +40,7 @@ class _Podcasts_ShowsState extends State<Podcasts_Shows> {
                     'Your Liked Podcasts',
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 22, // Phóng to Text
+                        fontSize: 20, // Phóng to Text
                         fontWeight: FontWeight.bold),
                   ),
                 ],
