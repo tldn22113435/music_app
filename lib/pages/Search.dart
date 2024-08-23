@@ -27,7 +27,7 @@ class _SearchState extends State<Search> {
                       size: 30,
                     ),
                     onPressed: () {
-                      Navigator.pop(context); // Quay lại trang trước
+                      Navigator.pop(context);
                     },
                   ),
                 ],
@@ -108,7 +108,7 @@ class _SearchState extends State<Search> {
                           isSquare: true),
                       SizedBox(height: 30),
                       playlistItem('assets/images/ps3.png', 'Baking a Mystery',
-                          'Updated Aug 21• Stephanie Soo',
+                          'Updated Aug 21• Stephanie',
                           isSquare: true),
                       SizedBox(height: 30),
                       playlistItem('assets/images/Artists5.png', 'keshi', ''),
