@@ -40,8 +40,8 @@ class _LogInState extends State<LogIn> {
                 child: Column(
                   children: <Widget>[
                     Container(
-                      height: 125,
-                      width: 300,
+                      height: 135,
+                      width: 250,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage('assets/images/musium.png'),
@@ -238,12 +238,12 @@ class _LogInState extends State<LogIn> {
                               ),
                             ),
                             child: CircleAvatar(
-                              minRadius: 20,
+                              minRadius: 15,
                               backgroundColor: button,
                               child: Image.asset(
                                 'assets/images/google.png',
-                                height: 30,
-                                width: 30,
+                                height: 20,
+                                width: 20,
                               ),
                             ),
                           ),
@@ -257,12 +257,12 @@ class _LogInState extends State<LogIn> {
                               ),
                             ),
                             child: CircleAvatar(
-                              minRadius: 20,
+                              minRadius: 15,
                               backgroundColor: button,
                               child: Image.asset(
                                 'assets/images/facebook.png',
-                                height: 30,
-                                width: 30,
+                                height: 20,
+                                width: 20,
                               ),
                             ),
                           ),
@@ -276,10 +276,10 @@ class _LogInState extends State<LogIn> {
                               ),
                             ),
                             child: CircleAvatar(
-                                minRadius: 20,
+                                minRadius: 15,
                                 backgroundColor: button,
                                 child: Icon(Icons.apple,
-                                    size: 30, color: Colors.white)),
+                                    size: 20, color: Colors.white)),
                           ),
                         ],
                       ),
