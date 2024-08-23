@@ -6,11 +6,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-    final double iconSize = screenSize.width * 0.08;
+    final double textFontSize = screenSize.width * 0.03;
+    final double titleFontSize = screenSize.width * 0.048;
     final double rowPadding = screenSize.width * 0.025;
-    final double titleFontSize = screenSize.width * 0.05;
-    final double textFontSize = screenSize.width * 0.026;
-    final double imageHeight = screenSize.height * 0.21;
+    final double imageHeight = screenSize.height * 0.174;
+    final double iconSize = screenSize.width * 0.08;
 
     return Scaffold(
       extendBody: true,

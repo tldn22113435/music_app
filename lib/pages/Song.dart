@@ -3,7 +3,7 @@ import 'package:music_app/pages/Menu.dart';
 import 'package:music_app/pages/Playlist.dart';
 import 'package:music_app/pages/Queue.dart';
 
-class SongScreen extends StatelessWidget {
+class Song_Screen extends StatelessWidget {
   final Color button = Color(0xFF8A9A9D);
 
   @override
@@ -43,8 +43,7 @@ class SongScreen extends StatelessWidget {
                                 'Lofi Loft',
                                 style: TextStyle(
                                   color: Color(0xFFA6F3FF),
-                                  fontSize: screenWidth *
-                                      0.04, // Responsive font size
+                                  fontSize: screenWidth * 0.04,
                                 ),
                               ),
                               IconButton(
@@ -221,7 +220,7 @@ class SongScreen extends StatelessWidget {
                             MaterialPageRoute(
                               builder: (context) => QueueScreen(),
                             ),
-                          ); // Chuyển đến trang QueueScreen
+                          );
                         },
                       ),
                       IconButton(

@@ -16,7 +16,7 @@ class AddToPlaylistScreen extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => SongScreen()),
+              MaterialPageRoute(builder: (context) => Song_Screen()),
             );
           },
         ),
