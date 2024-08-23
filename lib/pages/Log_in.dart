@@ -40,7 +40,7 @@ class _LogInState extends State<LogIn> {
                 child: Column(
                   children: <Widget>[
                     Container(
-                      height: 160,
+                      height: 125,
                       width: 300,
                       decoration: BoxDecoration(
                           image: DecorationImage(
@@ -292,7 +292,7 @@ class _LogInState extends State<LogIn> {
                               text: "Don't have an account? ",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 16,
+                                fontSize: 10,
                                 letterSpacing: 1.5,
                                 fontWeight: FontWeight.w500,
                               )),
