@@ -82,17 +82,17 @@ class _ArtistsState extends State<Artists> {
     return Row(
       children: <Widget>[
         Container(
-          width: 90, // Kích thước của hình ảnh
+          width: 90,
           height: 90,
           decoration: BoxDecoration(
-            shape: BoxShape.circle, // Thay đổi thành hình tròn
+            shape: BoxShape.circle,
             image: DecorationImage(
               image: AssetImage(imagePath),
               fit: BoxFit.cover,
             ),
           ),
         ),
-        SizedBox(width: 20), // Tăng khoảng cách giữa các cột
+        SizedBox(width: 20),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
