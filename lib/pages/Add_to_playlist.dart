@@ -82,9 +82,7 @@ class AddToPlaylistScreen extends StatelessWidget {
                         hintStyle: TextStyle(color: Colors.white54),
                         border: InputBorder.none,
                       ),
-                      onSubmitted: (value) {
-                        // Handle search functionality
-                      },
+                      onSubmitted: (value) {},
                     ),
                   ),
                 ],
@@ -99,9 +97,7 @@ class AddToPlaylistScreen extends StatelessWidget {
                     'current favorites',
                     '20 songs',
                     'assets/images/song7_image.png',
-                    onTap: () {
-                      // Handle item tap if needed
-                    },
+                    onTap: () {},
                   ),
                   SizedBox(height: 16),
                   playlistItem(

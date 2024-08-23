@@ -268,7 +268,7 @@ class _LibraryState extends State<Library> {
                                     Text(
                                       '12 songs',
                                       style: TextStyle(
-                                        fontSize: 17,
+                                        fontSize: 16,
                                         fontWeight: FontWeight.w700,
                                         color: Colors.grey,
                                       ),
