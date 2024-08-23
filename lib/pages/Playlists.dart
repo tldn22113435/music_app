@@ -40,7 +40,7 @@ class _PlaylistsState extends State<Playlists> {
                     'Your Liked Playlists',
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 22, // Phóng to Text
+                        fontSize: 20, // Phóng to Text
                         fontWeight: FontWeight.bold),
                   ),
                 ],
