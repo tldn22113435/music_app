@@ -4,10 +4,8 @@ import 'package:music_app/pages/Stats.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Get screen size
     final screenSize = MediaQuery.of(context).size;
 
-    // Dynamic dimensions based on screen size
     final double iconSize = screenSize.width * 0.08;
     final double rowPadding = screenSize.width * 0.025;
     final double titleFontSize = screenSize.width * 0.05;

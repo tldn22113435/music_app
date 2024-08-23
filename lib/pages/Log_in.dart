@@ -54,7 +54,7 @@ class _LogInState extends State<LogIn> {
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Colors.white,
-                              fontSize: 32,
+                              fontSize: 20,
                               letterSpacing: 2.5),
                           textAlign: TextAlign.center),
                     ),
@@ -316,8 +316,8 @@ class _LogInState extends State<LogIn> {
                 ),
               ),
               Positioned(
-                left: 5, // Khoảng cách từ trái
-                top: 20, // Khoảng cách từ trên cùng
+                left: 5,
+                top: 20,
                 child: IconButton(
                   icon: Icon(
                     Icons.arrow_back,
@@ -325,7 +325,7 @@ class _LogInState extends State<LogIn> {
                     size: 30,
                   ),
                   onPressed: () {
-                    Navigator.pop(context); // Quay lại trang trước
+                    Navigator.pop(context);
                   },
                 ),
               ),

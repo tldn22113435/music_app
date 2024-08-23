@@ -131,9 +131,8 @@ class _ExploreState extends State<Explore> {
                           borderRadius: BorderRadius.circular(25),
                           borderSide: BorderSide.none, // Loại bỏ đường viền
                         ),
-                        contentPadding: EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 15), // Thêm khoảng cách nội dung
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                       ),
                     ),
                   ),

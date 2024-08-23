@@ -41,7 +41,7 @@ class SignIn extends StatelessWidget {
                     ],
                   ),
                   margin: EdgeInsets.only(top: 0),
-                  height: 200,
+                  height: 150,
                   width: 320,
                   decoration: BoxDecoration(
                       image: DecorationImage(
