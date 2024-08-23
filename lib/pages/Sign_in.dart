@@ -10,9 +10,18 @@ class SignIn extends StatelessWidget {
     Color button = Color(0xFF1E1E1E);
     Color borderbutton = Color(0xFFDBE7E8);
     Color mycolor = Color(0xFF06A0B5);
+
+    // Get screen size
+    final screenSize = MediaQuery.of(context).size;
+
+    // Dynamic height and width based on screen size
+    final double logoHeight = screenSize.height * 0.25;
+    final double logoWidth = screenSize.width * 0.8;
+
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         statusBarColor: insideCircle,
         statusBarIconBrightness: Brightness.light));
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -25,44 +34,48 @@ class SignIn extends StatelessWidget {
                   child: Stack(
                     children: <Widget>[
                       Positioned(
-                        left: 10, // Khoảng cách từ trái
-                        top: 20, // Khoảng cách từ trên cùng
+                        left: 10,
+                        top: screenSize.height * 0.02, // Dynamic top position
                         child: IconButton(
                           icon: Icon(
                             Icons.arrow_back,
                             color: Colors.white,
-                            size: 30,
+                            size: screenSize.width * 0.08,
                           ),
                           onPressed: () {
-                            Navigator.pop(context); // Quay lại trang trước
+                            Navigator.pop(context);
                           },
                         ),
                       ),
                     ],
                   ),
                   margin: EdgeInsets.only(top: 0),
-                  height: 150,
-                  width: 320,
+                  height: logoHeight,
+                  width: logoWidth,
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage('assets/images/musium.png'),
                           fit: BoxFit.cover)),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
+                  padding:
+                      EdgeInsets.symmetric(vertical: screenSize.height * 0.01),
                   child: Text("Let's get you in",
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
-                          fontSize: 44,
+                          fontSize:
+                              screenSize.width * 0.11, // Dynamic font size
                           letterSpacing: 2.5),
                       textAlign: TextAlign.center),
                 ),
-                google(button, borderbutton),
-                facebook(button, borderbutton),
-                apple(button, borderbutton),
+                google(button, borderbutton, screenSize),
+                facebook(button, borderbutton, screenSize),
+                apple(button, borderbutton, screenSize),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: screenSize.width * 0.08,
+                      vertical: screenSize.height * 0.01),
                   child: Row(
                     children: <Widget>[
                       Expanded(
@@ -72,13 +85,16 @@ class SignIn extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: screenSize.width * 0.08,
+                            vertical: screenSize.height * 0.02),
                         child: Text(
                           'or',
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: 20),
+                              fontSize:
+                                  screenSize.width * 0.05), // Dynamic font size
                         ),
                       ),
                       Expanded(
@@ -91,7 +107,8 @@ class SignIn extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: screenSize.width * 0.1),
                   child: Container(
                     decoration: BoxDecoration(
                       boxShadow: [
@@ -113,7 +130,8 @@ class SignIn extends StatelessWidget {
                         'Log in with a password',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 16,
+                          fontSize:
+                              screenSize.width * 0.04, // Dynamic font size
                           letterSpacing: 1.5,
                           fontWeight: FontWeight.bold,
                         ),
@@ -126,14 +144,15 @@ class SignIn extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 15),
+                  padding: EdgeInsets.only(top: screenSize.height * 0.02),
                   child: RichText(
                     text: TextSpan(children: <TextSpan>[
                       TextSpan(
                           text: "Don't have an account? ",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize:
+                                screenSize.width * 0.04, // Dynamic font size
                             letterSpacing: 1.5,
                             fontWeight: FontWeight.w500,
                           )),
@@ -142,7 +161,8 @@ class SignIn extends StatelessWidget {
                           style: TextStyle(
                               color: mycolor,
                               fontWeight: FontWeight.w700,
-                              fontSize: 16,
+                              fontSize:
+                                  screenSize.width * 0.04, // Dynamic font size
                               letterSpacing: 1.5,
                               shadows: [
                                 Shadow(
@@ -161,24 +181,28 @@ class SignIn extends StatelessWidget {
     );
   }
 
-  Padding facebook(Color button, Color borderbutton) {
+  Padding facebook(Color button, Color borderbutton, Size screenSize) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: EdgeInsets.symmetric(
+          horizontal: screenSize.width * 0.05,
+          vertical: screenSize.height * 0.01),
       child: ElevatedButton(
           onPressed: () {},
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset('assets/images/facebook.png', width: 24, height: 24),
+              Image.asset('assets/images/facebook.png',
+                  width: screenSize.width * 0.06,
+                  height: screenSize.width * 0.06),
               SizedBox(
-                width: 10,
+                width: screenSize.width * 0.03,
               ),
               Text(
                 'Continue With Facebook',
                 style: TextStyle(
                     color: Colors.white,
-                    letterSpacing: 1,
-                    fontSize: 16,
+                    letterSpacing: 0.1,
+                    fontSize: screenSize.width * 0.04, // Dynamic font size
                     fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
@@ -193,9 +217,11 @@ class SignIn extends StatelessWidget {
     );
   }
 
-  Padding apple(Color button, Color borderbutton) {
+  Padding apple(Color button, Color borderbutton, Size screenSize) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: EdgeInsets.symmetric(
+          horizontal: screenSize.width * 0.05,
+          vertical: screenSize.height * 0.01),
       child: ElevatedButton(
           onPressed: () {},
           child: Row(
@@ -203,50 +229,18 @@ class SignIn extends StatelessWidget {
             children: <Widget>[
               Icon(
                 Icons.apple,
-                size: 24,
+                size: screenSize.width * 0.06,
                 color: Colors.white,
               ),
               SizedBox(
-                width: 10,
+                width: screenSize.width * 0.03,
               ),
               Text(
                 'Continue With Apple',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
-                    letterSpacing: 1,
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-          style: ElevatedButton.styleFrom(
-              backgroundColor: button,
-              minimumSize: Size(double.infinity, 50),
-              padding: EdgeInsets.symmetric(horizontal: 80),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(color: borderbutton, width: 0.2)))),
-    );
-  }
-
-  Padding google(Color button, Color borderbutton) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: ElevatedButton(
-          onPressed: () {},
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image.asset('assets/images/google.png', width: 24, height: 24),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                'Continue With Google',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    letterSpacing: 1,
+                    fontSize: screenSize.width * 0.04, // Dynamic font size
+                    letterSpacing: 0.1,
                     fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
@@ -255,7 +249,41 @@ class SignIn extends StatelessWidget {
           style: ElevatedButton.styleFrom(
               backgroundColor: button,
               minimumSize: Size(double.infinity, 50),
-              padding: EdgeInsets.symmetric(horizontal: 80),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  side: BorderSide(color: borderbutton, width: 0.2)))),
+    );
+  }
+
+  Padding google(Color button, Color borderbutton, Size screenSize) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: screenSize.width * 0.05,
+          vertical: screenSize.height * 0.01),
+      child: ElevatedButton(
+          onPressed: () {},
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image.asset('assets/images/google.png',
+                  width: screenSize.width * 0.06,
+                  height: screenSize.width * 0.06),
+              SizedBox(
+                width: screenSize.width * 0.03,
+              ),
+              Text(
+                'Continue With Google',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: screenSize.width * 0.04, // Dynamic font size
+                    letterSpacing: 0.1,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          style: ElevatedButton.styleFrom(
+              backgroundColor: button,
+              minimumSize: Size(double.infinity, 50),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                   side: BorderSide(color: borderbutton, width: 0.2)))),

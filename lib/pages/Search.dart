@@ -32,10 +32,7 @@ class _SearchState extends State<Search> {
                   ),
                 ],
               ),
-              SizedBox(
-                  height:
-                      20), // Add spacing between the back button and search bar
-              // Container for the search bar with white border and search icon on the right
+              SizedBox(height: 20),
               Container(
                 decoration: BoxDecoration(
                   color: Colors.transparent,

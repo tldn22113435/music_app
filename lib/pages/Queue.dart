@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/pages/Equalizer.dart';
 import 'package:music_app/pages/Playlist.dart';
 
 class QueueScreen extends StatefulWidget {
@@ -191,7 +192,10 @@ class _QueueScreenState extends State<QueueScreen> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      // Implement REMOVE functionality
+                      setState(() {
+                        // Remove selected items
+                        _selectedItems = List<bool>.filled(9, false);
+                      });
                     },
                     child: Text(
                       'REMOVE',
@@ -204,7 +208,8 @@ class _QueueScreenState extends State<QueueScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // Implement ADD TO QUEUE functionality
+                      // Add selected items to queue
+                      // Implement your logic here
                     },
                     child: Text(
                       'ADD TO QUEUE',
@@ -264,8 +269,17 @@ class _QueueScreenState extends State<QueueScreen> {
                 ],
               ),
             ),
-            Icon(Icons.menu,
-                color: Colors.white70), // Changed to three-bar icon
+            IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EqualizerScreen(),
+                  ),
+                ); // Chuyển đến trang QueueScreen
+              },
+            ), // Changed to three-bar icon
           ],
         ),
       ),

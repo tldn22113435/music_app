@@ -82,7 +82,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                           'assets/images/song_image.png'), // Your image asset
                       fit: BoxFit.cover,
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(3),
                   ),
                 ),
                 SizedBox(height: 16),

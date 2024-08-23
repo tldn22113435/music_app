@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/pages/Add_to_playlist.dart';
-
-import 'SleepTimerScreen.dart';
+import 'package:music_app/pages/SleepTimerScreen.dart';
 
 class MenuScreen extends StatelessWidget {
   @override
@@ -17,9 +16,11 @@ class MenuScreen extends StatelessWidget {
             icon: Icon(Icons.add, color: Colors.white),
             onPressed: () {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => AddToPlaylistScreen()));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AddToPlaylistScreen(),
+                ),
+              );
             },
           ),
           SizedBox(width: 16),
@@ -60,19 +61,19 @@ class MenuScreen extends StatelessWidget {
           Expanded(
             child: ListView(
               children: [
-                menuItem(Icons.playlist_add, 'Add to playlist'),
-                menuItem(Icons.queue_music, 'Add to queue'),
+                menuItem(Icons.music_note, 'Add to playlist'),
+                menuItem(Icons.add_to_photos, 'Add to queue'),
                 menuItem(Icons.remove_circle_outline, 'Remove from playlist'),
-                menuItem(Icons.label_outline, 'Modify tags'),
+                menuItem(Icons.local_offer_outlined, 'Modify tags'),
                 menuItem(Icons.person_outline, 'View Artist'),
-                menuItem(Icons.album_outlined, 'View Album'),
-                menuItem(Icons.info_outline, 'Show Credits'),
-                menuItem(Icons.download_outlined, 'Download'),
-                menuItem(Icons.share_outlined, 'Share'),
+                menuItem(Icons.album, 'View Album'),
+                menuItem(Icons.description_outlined, 'Show Credits'),
+                menuItem(Icons.download_rounded, 'Download'),
+                menuItem(Icons.share, 'Share'),
                 menuItem(Icons.qr_code, 'Generate QR Code'),
-                menuItem(Icons.timer_outlined, 'Sleep Timer', context),
-                menuItem(Icons.visibility_off_outlined, 'Hide song'),
-                menuItem(Icons.radio, 'Go to Song Radio'),
+                menuItem(Icons.bedtime_outlined, 'Sleep Timer', context),
+                menuItem(Icons.visibility_off, 'Hide song'),
+                menuItem(Icons.radio_button_checked, 'Go to Song Radio'),
               ],
             ),
           ),
@@ -92,11 +93,11 @@ class MenuScreen extends StatelessWidget {
         if (title == 'Sleep Timer' && context != null) {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => SleepTimerScreen()),
+            MaterialPageRoute(
+                builder: (context) =>
+                    SleepTimerScreen()), // Điều hướng đến QueueScreen
           );
-        } else {
-          // Xử lý sự kiện khi nhấn vào các item khác
-        }
+        } else {}
       },
     );
   }
